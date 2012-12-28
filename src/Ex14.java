@@ -1,8 +1,8 @@
 /**
  * Write a description of class Ex14 here.
  * 
- * @author (your name)
- * @version (a version number or a date)
+ * @author (Raskanskyz)
+ * @version (1.0)
  */
 public class Ex14 {
 	private static int startFlag;
