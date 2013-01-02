@@ -63,6 +63,17 @@ public class Ex14 {
 		return k;
 	}// static int f
 
+	public static int generalGCD(int m, int n) {
+
+		if (m % 2 != 0 || n % 2 != 0) {
+			return oddGCD(m, n);
+
+		} else {
+			return 2 * generalGCD(m / 2, n / 2);
+		}
+
+	}// generalGCD
+
 	// my private methods
 
 	private static int binarySearch(int[] data, int num) {
@@ -102,7 +113,7 @@ public class Ex14 {
 
 	private static int partition(int[] array, int start, int end) {
 		swap(array, start,
-				medianLocation(array, start + 2, end, (start + end) / 2));
+				medianLocation(array, start + 1, end, (start + end) / 2));
 		int median = partition(array, start + 1, end, array[start]);
 		swap(array, start, median);
 		return median;
@@ -149,4 +160,30 @@ public class Ex14 {
 			}
 		}
 	}// medianLocation
+
+	private static int oddGCD(int m, int n) {
+		if (m % 2 == 0 && n % 2 == 0) {
+			System.err.println("Both values are Even numbers!X");
+			return -1;
+		}
+		if (n == m)
+			return n;
+		if (m > n)
+			return oddGCD(n, m - n);
+		return oddGCD(m, n - m);
+	}
+
+	
+	
+	
+	//main method*************************************
+	public static void main(String[] args) {
+		int[] a = { 4, 5, 3, 4, 55, 64, 56, 456, 45, 645, 6435, 6453, 645, 6463 };
+		Ex14.quickSort(a);
+		for (int curr : a) {
+			System.out.println(curr);
+		}
+		System.out.println("******************");
+		System.out.println(Ex14.generalGCD(48, 14));
+	}
 }// class
