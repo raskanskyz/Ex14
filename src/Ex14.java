@@ -1,5 +1,4 @@
 /**
- * Binary search example.
  * 
  * @author (Raskanskyz)
  * @version (1.0)
@@ -8,11 +7,12 @@
 public class Ex14 {
 
 	/**
-	 * Time Complexity: O(log2N). 
-	 * Space complexity: O(1).
 	 * 
 	 * The 'count' methods computes how many times a value appears in a sorted
 	 * array.
+	 * 
+	 * Time Complexity: O(log2N). 
+	 * Space complexity: O(1).
 	 * 
 	 * @param a
 	 *            The sorted array.
@@ -97,6 +97,16 @@ public class Ex14 {
 		return k;
 	}// static int f
 
+	/**
+	 * The 'generalGCD' method uses 'oddGCD' recursively
+	 * in order to compute the Greatest Common Divisor.
+	 * 
+	 * @param m The first value.
+	 * 
+	 * @param n The second value.
+	 * 
+	 * @return The Greatest Common Divisor.
+	 */
 	public static int generalGCD(int m, int n) {
 
 		if (m % 2 != 0 || n % 2 != 0) {
@@ -108,26 +118,53 @@ public class Ex14 {
 
 	}// generalGCD
 
+	/**
+	* The 'isSumOf' method calls an override 'isSumOf' method which in turn returns 'true'
+	 * if 'n' is a sum of elements in the array 's'.
+	 * 
+	 * @param s A given Array.
+	 * @param n The value to check if is summable by elements in 's'.
+	 * @return 'true' if 'n' is a sum of 's', otherwise returns 'false'.
+	 */
 	public static boolean isSumOf(int[] s, int n) {
 		int counter = 0;
 		int sum = 0;
 		return isSumOf(s, n, counter, sum);
 	}// isSumOf
 
+	
+	
+	
+	
+	
 	// my private methods
 
+	/**
+	 * The 'isSumOf' method returns 'true' if 'n' is a sum of elements in 'array'.
+	 * 
+	 * @param array A given Array.
+	 * @param n The value to check if is summable by elements in 'array'.
+	 * @param counter Points on a cell in 'array'.
+	 * @param sum The current sum in a particular recursive call.
+	 * @return 'true' if 'n' is a sum of 'array', otherwise returns 'false'.
+	 * 
+	 */
 	private static boolean isSumOf(int[] array, int n, int counter, int sum) {
-
+		if(sum==n || n==0){
+			return true;
+		}
+		
 		if (counter > array.length - 1 || sum > n) {
 			return false;
 		}
 		if (counter == array.length - 1) {
 			return isSumOf(array, n, counter, sum + array[counter]);// <----explain
-			// sum+s[counter])
+	
 		} else {
-			return ((isSumOf(array, n, counter, sum + array[counter])) || (isSumOf(
-					array, n, counter + 1, sum + array[counter + 1])));
+			return ((isSumOf(array, n, counter, sum + array[counter])) || 
+					(isSumOf(array, n, counter + 1, sum + array[counter + 1])));
 		}// else
+		
 	}// isSumOf
 
 	private static int binarySearch(int[] data, int num) {
