@@ -7,6 +7,19 @@
 
 public class Ex14 {
 
+	/**
+	 * Time Complexity: O(log2N). 
+	 * Space complexity: O(1).
+	 * 
+	 * The 'count' methods computes how many times a value appears in a sorted
+	 * array.
+	 * 
+	 * @param a
+	 *            The sorted array.
+	 * @param x
+	 *            The value we are counting.
+	 * @return The number of appearances of 'x' in the array 'a'.
+	 */
 	public static int count(int[] a, int x) {
 		int startFlag;
 		int endFlag;
@@ -44,6 +57,27 @@ public class Ex14 {
 		return endFlag - startFlag;
 	}// count method
 
+	/**
+	 * The 'f' method compares two arrays(a, b), finds what elements exist in
+	 * 'a' and don't exist in 'b', those elements are then inserted into the
+	 * array 'c' and eventually 'f' returns the highest value in 'c' (in other
+	 * words, 'f' returns the highest element that is in 'a' and not in 'b').
+	 * 
+	 * Original Algorithm:
+	 * 		Time Complexity: O(n^2). 
+	 * 		Space Complexity: O(1).
+	 * 
+	 * Improved Algorithm:
+	 * 		Time Complexity: O(n log(n)).
+	 * 		Space Complexity: O(1).
+	 * @param a
+	 *            The array we want to extract its unique elements from.
+	 * @param b
+	 *            The array we compare its elements with the elements from 'a'
+	 * @param c
+	 *            The array we store the unique elements in.
+	 * @return The highest unique element.
+	 */
 	public static int f(int[] a, int[] b, int[] c) {
 		int t = 0;
 		int k = 0;
@@ -193,10 +227,6 @@ public class Ex14 {
 	public static void main(String[] args) {
 		int[] a = { 4, 5, 3, 4, 55, 64, 56, 456, 45, 645, 6435, 6453, 645, 6463 };
 		Ex14.quickSort(a);
-		for (int curr : a) {
-			System.out.println(curr);
-		}
-		System.out.println("******************");
-		System.out.println(Ex14.generalGCD(48, 14));
+		System.out.println(count(a, 4));
 	}
 }// class
