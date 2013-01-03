@@ -6,10 +6,10 @@
  */
 
 public class Ex14 {
-	private static int startFlag;
-	private static int endFlag;
 
 	public static int count(int[] a, int x) {
+		int startFlag;
+		int endFlag;
 		int lowerBound = 0;
 		int upperBound = a.length - 1;
 		int middle;
@@ -74,7 +74,27 @@ public class Ex14 {
 
 	}// generalGCD
 
+	public static boolean isSumOf(int[] s, int n) {
+		int counter = 0;
+		int sum = 0;
+		return isSumOf(s, n, counter, sum);
+	}// isSumOf
+
 	// my private methods
+
+	private static boolean isSumOf(int[] array, int n, int counter, int sum) {
+
+		if (counter > array.length - 1 || sum > n) {
+			return false;
+		}
+		if (counter == array.length - 1) {
+			return isSumOf(array, n, counter, sum + array[counter]);// <----explain
+			// sum+s[counter])
+		} else {
+			return ((isSumOf(array, n, counter, sum + array[counter])) || (isSumOf(
+					array, n, counter + 1, sum + array[counter + 1])));
+		}// else
+	}// isSumOf
 
 	private static int binarySearch(int[] data, int num) {
 
@@ -162,10 +182,6 @@ public class Ex14 {
 	}// medianLocation
 
 	private static int oddGCD(int m, int n) {
-		if (m % 2 == 0 && n % 2 == 0) {
-			System.err.println("Both values are Even numbers!X");
-			return -1;
-		}
 		if (n == m)
 			return n;
 		if (m > n)
@@ -173,10 +189,7 @@ public class Ex14 {
 		return oddGCD(m, n - m);
 	}
 
-	
-	
-	
-	//main method*************************************
+	// main method*************************************
 	public static void main(String[] args) {
 		int[] a = { 4, 5, 3, 4, 55, 64, 56, 456, 45, 645, 6435, 6453, 645, 6463 };
 		Ex14.quickSort(a);
