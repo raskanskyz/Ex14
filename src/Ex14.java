@@ -158,7 +158,7 @@ public class Ex14 {
 			return false;
 		}
 		if (counter == array.length - 1) {
-			return isSumOf(array, n, counter, sum + array[counter]);// <----explain
+			return isSumOf(array, n, counter, sum + array[counter]);
 	
 		} else {
 			return ((isSumOf(array, n, counter, sum + array[counter])) || 
