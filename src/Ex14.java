@@ -11,8 +11,7 @@ public class Ex14 {
 	 * The 'count' methods computes how many times a value appears in a sorted
 	 * array.
 	 * 
-	 * Time Complexity: O(log2N). 
-	 * Space complexity: O(1).
+	 * Time Complexity: O(log2N). Space complexity: O(1).
 	 * 
 	 * @param a
 	 *            The sorted array.
@@ -58,18 +57,16 @@ public class Ex14 {
 	}// count method
 
 	/**
-	 * The 'f' method compares elements in two arrays(a, b), finds what elements exist in
-	 * 'a' and don't exist in 'b', those elements are then inserted into the
-	 * array 'c' and eventually 'f' returns the highest value in 'c' (in other
-	 * words, 'f' returns the highest element that is in 'a' and not in 'b').
+	 * The 'f' method compares elements in two arrays(a, b), finds what elements
+	 * exist in 'a' and don't exist in 'b', those elements are then inserted
+	 * into the array 'c' and eventually 'f' returns the highest value in 'c'
+	 * (in other words, 'f' returns the highest element that is in 'a' and not
+	 * in 'b').
 	 * 
-	 * Original Algorithm:
-	 * 		Time Complexity: O(n^2). 
-	 * 		Space Complexity: O(1).
+	 * Original Algorithm: Time Complexity: O(n^2). Space Complexity: O(1).
 	 * 
-	 * Improved Algorithm:
-	 * 		Time Complexity: O(n log(n)).
-	 * 		Space Complexity: O(1).
+	 * Improved Algorithm: Time Complexity: O(n log(n)). Space Complexity: O(1).
+	 * 
 	 * @param a
 	 *            The array we want to extract its unique elements from.
 	 * @param b
@@ -98,12 +95,14 @@ public class Ex14 {
 	}// static int f
 
 	/**
-	 * The 'generalGCD' method uses 'oddGCD' recursively
-	 * in order to compute the Greatest Common Divisor.
+	 * The 'generalGCD' method uses 'oddGCD' recursively in order to compute the
+	 * Greatest Common Divisor.
 	 * 
-	 * @param m The first value.
+	 * @param m
+	 *            The first value.
 	 * 
-	 * @param n The second value.
+	 * @param n
+	 *            The second value.
 	 * 
 	 * @return The Greatest Common Divisor.
 	 */
@@ -119,59 +118,61 @@ public class Ex14 {
 	}// generalGCD
 
 	/**
-	* The 'isSumOf' method calls an overload 'isSumOf' method which in turn returns 'true'
-	 * if 'n' is a sum of elements in the array 's'.
+	 * The 'isSumOf' method calls an overload 'isSumOf' method which in turn
+	 * returns 'true' if 'n' is a sum of elements in the array 's'.
 	 * 
-	 * @param s A given Array.
-	 * @param n The value to check if is summable by elements in 's'.
+	 * @param s
+	 *            A given Array.
+	 * @param n
+	 *            The value to check if is summable by elements in 's'.
 	 * @return 'true' if 'n' is a sum of 's', otherwise returns 'false'.
 	 */
 	public static boolean isSumOf(int[] s, int n) {
 		int counter = 0;
 		int sum = 0;
 		return isSumOf(s, n, counter, sum);
+
 	}// isSumOf
 
-	
-	
-	
-	
-	
 	// my private methods
 
 	/**
-	 * The 'isSumOf' method returns 'true' if 'n' is a sum of elements in 'array'.
+	 * The 'isSumOf' method returns 'true' if 'n' is a sum of elements in
+	 * 'array'.
 	 * 
-	 * @param array A given Array.
-	 * @param n The value to check if is summable by elements in 'array'.
-	 * @param counter Points on a cell in 'array'.
-	 * @param sum The current sum in a particular recursive call.
+	 * @param array
+	 *            A given Array.
+	 * @param n
+	 *            The value to check if is summable by elements in 'array'.
+	 * @param counter
+	 *            Points on a cell in 'array'.
+	 * @param sum
+	 *            The current sum in a particular recursive call.
 	 * @return 'true' if 'n' is a sum of 'array', otherwise returns 'false'.
 	 * 
 	 */
-	private static boolean isSumOf(int[] array, int n, int counter, int sum) {
-		if(sum==n || n==0){
-			return true;
-		}
-		
-		if (counter > array.length - 1 || sum > n) {
+	private static boolean isSumOf(int[] array, int n, int pointer, int sum) {
+		if (sum > n || pointer > array.length - 1)
 			return false;
-		}
-		if (counter == array.length - 1) {
-			return isSumOf(array, n, counter, sum + array[counter]);
-	
-		} else {
-			return ((isSumOf(array, n, counter, sum + array[counter])) || 
-					(isSumOf(array, n, counter + 1, sum + array[counter + 1])));
-		}// else
-		
+
+		if (sum == n || n == 0)
+			return true;
+
+		if (isSumOf(array, n, pointer, sum + array[pointer]))
+			return true;
+
+		return (isSumOf(array, n, pointer + 1, sum));
+
 	}// isSumOf
 
-	
 	/**
-	 * The 'binarySearch' checks if 'num' is in the array 'data' ('data' must be sorted!).
-	 * @param data The sorted array to search in.
-	 * @param num The value to search.
+	 * The 'binarySearch' checks if 'num' is in the array 'data' ('data' must be
+	 * sorted!).
+	 * 
+	 * @param data
+	 *            The sorted array to search in.
+	 * @param num
+	 *            The value to search.
 	 * @return 'num' if it is in the array, otherwise returns -1.
 	 */
 	private static int binarySearch(int[] data, int num) {
@@ -191,20 +192,23 @@ public class Ex14 {
 
 	}// binarySearch
 
-	
 	/**
-	 * The 'quickSort' calls an overload 'quickSort' method which in turn sorts the given array.
+	 * The 'quickSort' calls an overload 'quickSort' method which in turn sorts
+	 * the given array.
 	 */
 	private static void quickSort(int array[]) {
 		quickSort(array, 0, array.length - 1);
 	}
 
-	
 	/**
 	 * The 'quickSort' method sorts an array from highest value to lowest value.
-	 * @param array The array to sort.
-	 * @param start The relative start position in the recursion.
-	 * @param end The relative end position in the recursion.
+	 * 
+	 * @param array
+	 *            The array to sort.
+	 * @param start
+	 *            The relative start position in the recursion.
+	 * @param end
+	 *            The relative end position in the recursion.
 	 */
 	private static void quickSort(int array[], int start, int end) {
 		int median;
@@ -220,12 +224,15 @@ public class Ex14 {
 		}
 	}// quickSort
 
-	
 	/**
-	 * The 'partition' method recursively partitions an array into sub-arrays. 
-	 * @param array The array to partition
-	 * @param start The relative starting point.
-	 * @param end The relative end point.
+	 * The 'partition' method recursively partitions an array into sub-arrays.
+	 * 
+	 * @param array
+	 *            The array to partition
+	 * @param start
+	 *            The relative starting point.
+	 * @param end
+	 *            The relative end point.
 	 * @return The median point.
 	 */
 	private static int partition(int[] array, int start, int end) {
@@ -236,13 +243,17 @@ public class Ex14 {
 		return median;
 	}// partition
 
-	
 	/**
 	 * The 'partition' method recursively partitions an array into sub-arrays.
-	 * @param array The array to partition
-	 * @param start The relative starting point.
-	 * @param end The relative end point.
-	 * @param pivot The relative pivot to compare elements to.
+	 * 
+	 * @param array
+	 *            The array to partition
+	 * @param start
+	 *            The relative starting point.
+	 * @param end
+	 *            The relative end point.
+	 * @param pivot
+	 *            The relative pivot to compare elements to.
 	 * @return The partition point.
 	 */
 	private static int partition(int[] array, int start, int end, int pivot) {
@@ -260,12 +271,15 @@ public class Ex14 {
 		}
 	}
 
-	
 	/**
 	 * The 'swap' methods switches the position of two elements in the array.
-	 * @param array The given array.
-	 * @param index1 The first element to swap.
-	 * @param index2 The second element to swap with 'index1'.
+	 * 
+	 * @param array
+	 *            The given array.
+	 * @param index1
+	 *            The first element to swap.
+	 * @param index2
+	 *            The second element to swap with 'index1'.
 	 */
 	private static void swap(int array[], int index1, int index2) {
 		int temp = array[index1]; // store the first value in a temp
@@ -274,13 +288,18 @@ public class Ex14 {
 		array[index2] = temp; // copy the value of the temp into the second
 	}
 
-	
 	/**
-	 * The 'medianLocation' finds the relative median location out of three given index locations.
-	 * @param array The given array.
-	 * @param i The first index.
-	 * @param j The second index.
-	 * @param k The third index.
+	 * The 'medianLocation' finds the relative median location out of three
+	 * given index locations.
+	 * 
+	 * @param array
+	 *            The given array.
+	 * @param i
+	 *            The first index.
+	 * @param j
+	 *            The second index.
+	 * @param k
+	 *            The third index.
 	 * @return The relative median location.
 	 */
 	private static int medianLocation(int[] array, int i, int j, int k) {
@@ -303,11 +322,14 @@ public class Ex14 {
 		}
 	}// medianLocation
 
-
 	/**
-	 * The 'oddGCD' method calculates the Greatest Common Divisor between two odd numbers.
-	 * @param m The first number.
-	 * @param n The second number.
+	 * The 'oddGCD' method calculates the Greatest Common Divisor between two
+	 * odd numbers.
+	 * 
+	 * @param m
+	 *            The first number.
+	 * @param n
+	 *            The second number.
 	 * @return The Greatest Common Divisor.
 	 */
 	private static int oddGCD(int m, int n) {
